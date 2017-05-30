@@ -56,6 +56,7 @@
 		margin-top: -2px;
         white-space: nowrap;
         text-transform: uppercase;
+        display: inline;
 		
 		font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
         font-size: .9rem;
@@ -86,6 +87,7 @@
 		margin-top: -2px;
         white-space: nowrap;
         text-transform: uppercase;
+        display: inline;
 
         font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
         font-size: .9rem;
@@ -151,12 +153,18 @@
     }
 }
 
-.kpi-tile[max-width~="200px"] {
+.kpi-tile[max-width~="250px"] {
     .primaryValue, .listValue {
         font-size: 1.2rem;
     }
     .primaryLabel, .listLabel {
         font-size: .75rem;
+    }
+}
+
+.kpi-tile[max-width~="220px"] {
+    .primaryLabel, .listLabel {
+        display: block;
     }
 }
 
