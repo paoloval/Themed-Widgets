@@ -1,4 +1,7 @@
-# Themed-Widgets
+# Themed-Widgets - Mod
+This is a modded version. Enanched features will be available in the future.
+
+# Themed-Widgets - Original
 Qlik Sense UI Widgets supporting themes, here are a few examples of what you can achieve with this UI Widget...
 ![](https://raw.githubusercontent.com/newmans99/Themed-Widgets/master/img/example1.png)
 
