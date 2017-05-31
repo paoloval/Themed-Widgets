@@ -125,5 +125,6 @@
         "label": "Primary Measure Color"
       }
     ]
-  }
+  },
+  "dependencies": {}
 }

@@ -30,7 +30,7 @@
 
 
 .kpi-tile {
-    width:100%;
+    width:98%;
     font-size: @baseTextSize;
 	display: table;	
 }
@@ -38,7 +38,7 @@
 
 .primaryKPI {
 	display: table-cell; 
-	width:50%;
+	width: 45%;
 
 	padding-left: 5px;
 	
@@ -53,10 +53,9 @@
         .transition-properties( font-size 0.3s linear;);
     }
     .primaryLabel {
-		margin-top: -2px;
+		margin: -2px 0 0 5px;
         white-space: nowrap;
         text-transform: uppercase;
-        display: inline;
 		
 		font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
         font-size: .9rem;
@@ -67,34 +66,43 @@
 }
 
 .secondaryKPIs, .kpiList {
-    padding-top: 5px;
-    padding-left: 5px;
-	
-    .transition-properties( display 0.2s;);
-	
-    .secondaryValue, .listValue {
-        padding-left: 8px;
 
-		font-family: @defaultValueFont, Arial, sans-serif;
-        letter-spacing: -0.05em;
-        font-size: 1.5rem;
-        color:@secondaryMeasureColor;
-        text-transform: none;
-
-	.transition-properties( font-size 0.3s linear;);
-    }
-    .secondaryLabel, .listLabel {
-		margin-top: -2px;
-        white-space: nowrap;
-        text-transform: uppercase;
-        display: inline;
-
-        font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
-        font-size: .9rem;
-        color: @labelTextColor;
+	.row{
+		display: table-row;
+		width: 100%;
+		clear: both;
+		margin-top: 5px;
+		padding-left: 5px;
+		display: inline-block;
+		.transition-properties( display 0.2s;);
 		
-        .transition-properties( font-size 0.3s linear;);
-    }
+		.cell{
+			display: table-column;
+			min-width:50%;
+			line-height: 1.5rem;
+			float:left;
+		}
+		
+		.secondaryValue, .listValue {
+			font-family: @defaultValueFont, Arial, sans-serif;
+			letter-spacing: -0.05em;
+			font-size: 1.5rem;
+			color:@secondaryMeasureColor;
+			text-transform: none;
+			.transition-properties( font-size 0.3s linear;);
+		}
+		.secondaryLabel, .listLabel {
+			margin: -2px 0 0 0;
+			white-space: nowrap;
+			text-transform: uppercase;
+
+			font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
+			font-size: .9rem;
+			color: @labelTextColor;
+
+			.transition-properties( font-size 0.3s linear;);
+		}
+	}
 }
 
 .value1 {
@@ -138,43 +146,60 @@
 }
 
 //Responsive design
-.kpi-tile[max-width~="400px"] {
-    .secondaryValue {
-        font-size: 1.2rem;
-    }
-    .secondaryLabel {
-        font-size: .75rem;
-    }
+.kpi-tile[max-width~="410px"] {
+	.primaryValue, .listValue {
+		font-size: 1.5rem;
+	}
+	.primaryLabel, .listLabel {
+		font-size: .85rem;
+	}
+	.row{
+		.secondaryValue {
+			font-size: 1.2rem;
+		}
+		.secondaryLabel {
+			font-size: .75rem;
+		}
+	}
 }
 
-.kpi-tile[max-width~="299px"] {
-    .secondaryKPIs {
-        display: none;
-    }
+.kpi-tile[max-width~="350px"] {
+	.primaryValue, .listValue {
+		font-size: 1.2rem;
+	}
+	.primaryLabel, .listLabel {
+		font-size: .75rem;
+	}
+	.row{
+		.secondaryValue {
+			font-size: 1.1rem;
+		}
+		.secondaryLabel {
+			font-size: .60rem;
+		}
+	}
 }
 
-.kpi-tile[max-width~="250px"] {
-    .primaryValue, .listValue {
-        font-size: 1.2rem;
-    }
-    .primaryLabel, .listLabel {
-        font-size: .75rem;
-    }
+.kpi-tile[max-width~="270px"] {
+	.primaryKPI{
+		display: block;
+		width: 100%;
+	}
+	.primaryValue, .listValue {
+		font-size: 1.7rem;
+	}
+	.primaryLabel, .listLabel {
+		font-size: .85rem;
+	}
+	.row{
+		.secondaryValue {
+			font-size: 1.5rem;
+		}
+		.secondaryLabel {
+			font-size: .75rem;
+		}
+	}
 }
-
-.kpi-tile[max-width~="220px"] {
-    .primaryLabel, .listLabel {
-        display: block;
-    }
-}
-
-.kpi-tile[max-width~="150px"] {
-    .primaryKPI, .kpiList {
-        display: none;
-    }
-}
-
-
 .transition-properties(...) {
     -webkit-transition: @arguments;
     -moz-transition: @arguments;
@@ -183,11 +208,13 @@
 }</style>
 <div><div class="kpi-tile">
   <div class="{{settings.seperatePrimary ? ($index === 0 ? 'primaryKPI' : 'secondaryKPIs') : 'kpiList'}}" ng-repeat="measure in data.rows[0].measures track by $index">
-	<div class="{{settings.seperatePrimary ? ($index === 0 ? 'primaryValue' : 'secondaryValue') : 'listValue'}} {{($index === 0 &amp;&amp; settings.seperatePrimary) ? '' : 'value'+($index + (settings.seperatePrimary ? 0 : 1))}}">
-	  {{measure.qText}}
-	  <div class="{{settings.seperatePrimary ? ($index === 0 ? 'primaryLabel' : 'secondaryLabel') : 'listLabel'}}">
-		{{data.headers[$index].qFallbackTitle}}
-	  </div>
+	<div class="{{($index === 0 &amp;&amp; settings.seperatePrimary) ? '' : 'row value'+($index + (settings.seperatePrimary ? 0 : 1))}}">
+		<div class="{{settings.seperatePrimary ? ($index === 0 ? 'primaryValue' : 'cell secondaryValue') : 'listValue'}}">
+			{{measure.qText}}
+		</div>
+	  	<div class="{{settings.seperatePrimary ? ($index === 0 ? 'primaryLabel' : 'cell secondaryLabel') : 'listLabel'}}">
+			{{data.headers[$index].qFallbackTitle}}
+	  	</div>
 	</div>
   </div>
 </div></div>
