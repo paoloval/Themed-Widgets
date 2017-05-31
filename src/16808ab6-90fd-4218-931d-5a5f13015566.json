@@ -135,5 +135,6 @@
       }
     ],
     "sorting": true
-  }
+  },
+  "dependencies": {}
 }

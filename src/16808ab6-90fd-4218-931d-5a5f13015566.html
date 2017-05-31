@@ -32,36 +32,46 @@
 	display: table;	
 
 
-.kpiList {
-    padding-top: 5px;
-    padding-left: 5px;
-	
-    .transition-properties( display 0.2s;);
-	
-    .listValue {
-        padding-left: 8px;
+	.kpiList {
+		padding-top: 5px;
+		padding-left: 5px;
+		.transition-properties( display 0.2s;);
+		.row{
+			display: table;
+			width: 100%;
+			clear: both;
+			
+			.cell{
+				display: table-cell;
+				min-width:35%;
+				float: left;
+			}
+			.listValue {
+				padding-left: 8px;
 
-		font-family: @defaultValueFont, Arial, sans-serif;
-        letter-spacing: -0.05em;
-        font-size: 1.5rem;
-        color:@measureColor;
-        text-transform: none;
+				font-family: @defaultValueFont, Arial, sans-serif;
+				letter-spacing: -0.05em;
+				font-size: 1.5rem;
+				color:@measureColor;
+				text-transform: none;
 
-	.transition-properties( font-size 0.3s linear;);
-    }
-    .listLabel {
-		margin-top: -2px;
-        white-space: nowrap;
-        text-transform: uppercase;
-        display: inline;
-        
-        font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
-        font-size: .9rem;
-        color: @labelTextColor;
-		
-        .transition-properties( font-size 0.3s linear;);
-    }
-}
+				.transition-properties( font-size 0.3s linear;);
+			}
+			.listLabel {
+				padding-left: 8px;
+				margin-top: -2px;
+				white-space: nowrap;
+				text-transform: uppercase;
+
+				font-family: @defaultLabelFont, Helvetica, Arial, sans-serif;
+				font-size: .9rem;
+				line-height: 2rem;
+				color: @labelTextColor;
+
+				.transition-properties( font-size 0.3s linear;);
+			}
+		}
+	}
 }
 
 .value1 {
@@ -106,19 +116,32 @@
 
 //Responsive design
 
-.kpi-tile[max-width~="250px"] {
-    .listValue {
-        font-size: 1.2rem;
-    }
-    .listLabel {
-        font-size: .75rem;
-    }
+.kpi-tile[max-width~="420px"] {
+	.row{
+		.listValue {
+			font-size: 1.2rem;
+		}
+		.listLabel {
+			font-size: .75rem;
+			line-height: 1.6rem;
+		}
+	}
 }
-
-.kpi-tile[max-width~="220px"] {
-    .primaryLabel, .listLabel {
-        display: block;
-    }
+.kpi-tile[max-width~="270px"] {
+	.row{
+		display: block;
+		.cell{
+			display: block;
+			float: inherit;
+		}
+		.listValue {
+			font-size: 1.2rem;
+		}
+		.listLabel {
+			font-size: .75rem;
+			line-height: 1.6rem;
+		}
+	}
 }
 
 .kpi-tile[max-width~="150px"] {
@@ -136,13 +159,17 @@
 }</style>
 <div><div class="kpi-tile">
   <div class="kpiList" ng-repeat="row in data.rows track by $index">
-	<div class="{{'listValue value'+($index+1)}}">
-	  {{row.measures[0].qText}}
-		<div class="listLabel">
-		  {{(
-		  settings.displayMeasureLabel 	? (data.headers[1].qFallbackTitle + ((settings.displayDimLabel||settings.displayDimValue) 	? ' - ' : '')) 	: '') + (
-		  settings.displayDimLabel 		? (data.headers[0].qFallbackTitle + ((settings.displayDimValue) 							? ': ' 	: '')) 	: '') + (
-		  settings.displayDimValue 		? row.dimensions[0].qText 					: '')}}
+	<div class="{{'value'+($index+1)}}">
+		<div class="row">
+			<div class="cell listValue">
+				{{row.measures[0].qText}}
+			</div>
+			<div class="cell listLabel">
+			  {{(
+			  settings.displayMeasureLabel 	? (data.headers[1].qFallbackTitle + ((settings.displayDimLabel||settings.displayDimValue) 	? ' - ' : '')) 	: '') + (
+			  settings.displayDimLabel 		? (data.headers[0].qFallbackTitle + ((settings.displayDimValue) 							? ': ' 	: '')) 	: '') + (
+			  settings.displayDimValue 		? row.dimensions[0].qText 					: '')}}
+			</div>
 		</div>
 	</div>
   </div>
