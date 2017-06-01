@@ -38,7 +38,7 @@
 
 .primaryKPI {
 	display: table-cell; 
-	width: 45%;
+	width: 35%;
 
 	padding-left: 5px;
 	
@@ -70,6 +70,7 @@
 	.row{
 		display: table-row;
 		width: 100%;
+		max-width: 500px;
 		clear: both;
 		margin-top: 5px;
 		padding-left: 5px;
@@ -78,7 +79,7 @@
 		
 		.cell{
 			display: table-column;
-			min-width:40%;
+			min-width:30%;
 			line-height: 1.5rem;
 			float:left;
 		}
@@ -148,7 +149,7 @@
 }
 
 //Responsive design
-.kpi-tile[max-width~="530px"] {
+.kpi-tile[max-width~="670px"] {
 	.primaryValue, .listValue {
 		font-size: 1.5rem;
 	}
@@ -165,7 +166,7 @@
 	}
 }
 
-.kpi-tile[max-width~="410px"] {
+.kpi-tile[max-width~="530px"] {
 	.primaryValue, .listValue {
 		font-size: 1.2rem;
 	}
@@ -178,6 +179,7 @@
 		}
 		.secondaryLabel {
 			font-size: .60rem;
+			line-height: 1.6rem
 		}
 	}
 }
