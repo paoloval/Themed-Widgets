@@ -148,7 +148,7 @@
 }
 
 //Responsive design
-.kpi-tile[max-width~="410px"] {
+.kpi-tile[max-width~="530px"] {
 	.primaryValue, .listValue {
 		font-size: 1.5rem;
 	}
@@ -165,7 +165,7 @@
 	}
 }
 
-.kpi-tile[max-width~="350px"] {
+.kpi-tile[max-width~="410px"] {
 	.primaryValue, .listValue {
 		font-size: 1.2rem;
 	}
@@ -182,7 +182,7 @@
 	}
 }
 
-.kpi-tile[max-width~="270px"] {
+.kpi-tile[max-width~="380px"] {
 	.primaryKPI{
 		display: block;
 		width: 100%;
@@ -196,9 +196,18 @@
 	.row{
 		.secondaryValue {
 			font-size: 1.5rem;
+			text-align: left;
 		}
 		.secondaryLabel {
 			font-size: .75rem;
+		}
+	}
+}
+.kpi-tile[max-width~="280px"] {
+	.row{
+		.cell{
+			display: block;
+			float: inherit;
 		}
 	}
 }
